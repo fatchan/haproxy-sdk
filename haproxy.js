@@ -111,11 +111,12 @@ class HAProxy {
    */
   constructor(socket, retry = 2, retry_interval = 2, timeout = 1) {
     this._hap_processes = [];
-    let socket_files = [];
+    let socket_files = socket.split(',');
 
     if (!socket) {
       throw "must specify either socket directory or path";
     }
+/*
     if (!fs.existsSync(socket)) {
       throw util.format("socket path does not exist %s", socket);
     }
@@ -130,7 +131,7 @@ class HAProxy {
     } else {
       throw "UNIX socket file was not set";
     }
-
+*/
     if (socket_files === undefined || socket_files.length == 0) {
       throw util.format("No valid UNIX socket file was found at %s", socket);
     }
